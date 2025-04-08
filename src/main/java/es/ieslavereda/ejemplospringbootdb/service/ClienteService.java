@@ -17,4 +17,15 @@ public class ClienteService {
         return clienteRepository.getClientes();
     }
 
+    public Cliente getCliente(Long id) {
+        return clienteRepository.getCliente(id);
+    }
+
+    public Cliente add(Cliente cliente) {
+        return clienteRepository.add(cliente);
+    }
+
+    public Cliente remove(Long id) {
+        return clienteRepository.remove(id);
+    }
 }
