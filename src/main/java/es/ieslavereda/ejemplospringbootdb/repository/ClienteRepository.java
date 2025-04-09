@@ -1,6 +1,7 @@
 package es.ieslavereda.ejemplospringbootdb.repository;
 
 
+import es.ieslavereda.ejemplospringbootdb.repository.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,7 @@ public class ClienteRepository {
     @Autowired
     @Qualifier("mysqlDataSource")
     private DataSource dataSource;
+
 
     public List<Cliente> getClientes(){
 
@@ -123,5 +125,36 @@ public class ClienteRepository {
             throw e;
         }
 
+    }
+
+    public Cliente update(Cliente cliente) {
+
+        String sql = "UPDATE Cliente " +
+                "SET " +
+                "nombre=?,apellidos=?,dni=?,fecha_nacimiento=?,imagen=? " +
+                "WHERE id=?";
+
+        Cliente c = getCliente(cliente.getId());
+
+        try(Connection con = dataSource.getConnection()){
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+
+            int pos=0;
+            pstmt.setString(++pos,cliente.getNombre());
+            pstmt.setString(++pos,cliente.getApellidos());
+            pstmt.setString(++pos,cliente.getDni());
+            pstmt.setDate(++pos,cliente.getFechaNacimiento());
+            pstmt.setString(++pos,cliente.getImagen());
+            pstmt.setLong(++pos,cliente.getId());
+
+            if(pstmt.executeUpdate()==1)
+                return cliente;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package es.ieslavereda.ejemplospringbootdb.repository;
+package es.ieslavereda.ejemplospringbootdb.config;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 //import oracle.jdbc.datasource.impl.OracleDataSource;

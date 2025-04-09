@@ -1,6 +1,6 @@
 package es.ieslavereda.ejemplospringbootdb.controller;
 
-import es.ieslavereda.ejemplospringbootdb.repository.Cliente;
+import es.ieslavereda.ejemplospringbootdb.repository.model.Cliente;
 import es.ieslavereda.ejemplospringbootdb.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class ClienteController {
 
     @PutMapping
     public Cliente updateCliente(@RequestBody Cliente cliente){
-
+        return clienteService.update(cliente);
     }
 
 

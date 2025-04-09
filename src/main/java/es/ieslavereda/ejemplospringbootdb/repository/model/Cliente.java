@@ -1,4 +1,4 @@
-package es.ieslavereda.ejemplospringbootdb.repository;
+package es.ieslavereda.ejemplospringbootdb.repository.model;
 
 import lombok.*;
 

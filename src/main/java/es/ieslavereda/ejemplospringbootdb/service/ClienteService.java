@@ -1,6 +1,6 @@
 package es.ieslavereda.ejemplospringbootdb.service;
 
-import es.ieslavereda.ejemplospringbootdb.repository.Cliente;
+import es.ieslavereda.ejemplospringbootdb.repository.model.Cliente;
 import es.ieslavereda.ejemplospringbootdb.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,11 @@ public class ClienteService {
         return clienteRepository.add(cliente);
     }
 
-    public Integer remove(Long id) throws SQLException {
+    public Cliente remove(Long id) throws SQLException {
         return clienteRepository.remove(id);
+    }
+
+    public Cliente update(Cliente cliente) {
+        return clienteRepository.update(cliente);
     }
 }
