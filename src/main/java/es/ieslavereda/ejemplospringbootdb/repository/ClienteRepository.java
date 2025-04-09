@@ -7,10 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +99,22 @@ public class ClienteRepository {
         return null;
     }
 
-    public Cliente remove(Long id) {
+    public Integer remove(String id) throws SQLException {
+
+        try(Connection con = dataSource.getConnection()){
+
+            String sql = "DELETE FROM Cliente WHERE id=?";
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            int pos =0;
+            pstmt.setString(++pos,id);
+
+            return pstmt.executeUpdate();
+
+
+        } catch (Exception e) {
+            throw e;
+        }
 
     }
 }

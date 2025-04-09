@@ -5,6 +5,7 @@ import es.ieslavereda.ejemplospringbootdb.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -25,7 +26,7 @@ public class ClienteService {
         return clienteRepository.add(cliente);
     }
 
-    public Cliente remove(Long id) {
+    public Integer remove(String id) throws SQLException {
         return clienteRepository.remove(id);
     }
 }
