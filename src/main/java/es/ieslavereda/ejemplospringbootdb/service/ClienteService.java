@@ -26,7 +26,7 @@ public class ClienteService {
         return clienteRepository.add(cliente);
     }
 
-    public Integer remove(String id) throws SQLException {
+    public Integer remove(Long id) throws SQLException {
         return clienteRepository.remove(id);
     }
 }

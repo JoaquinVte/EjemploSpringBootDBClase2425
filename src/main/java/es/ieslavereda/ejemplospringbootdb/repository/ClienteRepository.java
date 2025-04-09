@@ -99,7 +99,12 @@ public class ClienteRepository {
         return null;
     }
 
-    public Integer remove(String id) throws SQLException {
+    public Cliente remove(Long id) throws SQLException {
+
+        Cliente cliente = getCliente(id);
+
+        if(cliente==null) throw new SQLException("El cliente no existe");
+
 
         try(Connection con = dataSource.getConnection()){
 
@@ -107,10 +112,12 @@ public class ClienteRepository {
 
             PreparedStatement pstmt = con.prepareStatement(sql);
             int pos =0;
-            pstmt.setString(++pos,id);
+            pstmt.setLong(++pos,id);
 
-            return pstmt.executeUpdate();
-
+            if(pstmt.executeUpdate()==1)
+                return cliente;
+            else
+                throw new SQLException("No se ha podido eliminar");
 
         } catch (Exception e) {
             throw e;

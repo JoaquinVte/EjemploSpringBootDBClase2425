@@ -44,7 +44,7 @@ public class ClienteController {
 
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<?> deleteCliente(@PathVariable String id){
+    public ResponseEntity<?> deleteCliente(@PathVariable Long id){
         logger.info("Recibido eliminacion de "+id);
 
         try {
