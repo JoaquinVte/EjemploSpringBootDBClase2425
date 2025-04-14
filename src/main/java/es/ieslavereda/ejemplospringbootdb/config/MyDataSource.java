@@ -26,7 +26,7 @@ public class MyDataSource {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser("joaalsai");
         dataSource.setPassword("1111");
-        dataSource.setURL("jdbc:mysql://localhost:3306/bbddJava");
+        dataSource.setURL("jdbc:mysql://localhost:3306/bbddPaises");
         return dataSource;
     }
 
